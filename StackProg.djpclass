@@ -1,0 +1,19 @@
+Program Body begins
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+Stack st
+STACKPUSH s 1
+STACKPUSH s 2
+STACKPUSH s 3
+STACKPUSH s 4
+STACKPOP s
+PrintLN -> New Line
+STACKTOP s
+PrintLN -> New Line
+STACKEMPTY s
+PrintLN -> New Line
+FunctionBodyEnds:main
+ENDS
