@@ -11,10 +11,11 @@ public class RunTime {
     public static Stack<HashMap<String,String>> activationStack = new Stack<>();
     public static Stack<String> varStack = new Stack<>();
     public static Stack<Scanner> scannerStack = new Stack<>();
-    public static String fileName = "ArithmeticOperations.djpclass";
-
+    //public static String fileName = "ArithmeticOperations.djpclass";
+    public static String fileName="";
 
     public static void main(String args[]) throws Exception{
+        fileName = args[0];
         Scanner sc = new Scanner(new File(fileName));
 
         if (sc.nextLine().equalsIgnoreCase("Program Body begins")) {
