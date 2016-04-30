@@ -8,6 +8,7 @@ import java.util.Stack;
  */
 public class RunTime {
     public static HashMap<String,String> symbolTable = new HashMap<>();
+    public static HashMap<String,Stack<String>> stackTable = new HashMap<>();
     public static Stack<HashMap<String,String>> activationStack = new Stack<>();
     public static Stack<String> varStack = new Stack<>();
     public static Stack<Scanner> scannerStack = new Stack<>();
@@ -24,7 +25,9 @@ public class RunTime {
     }
     public static void startExecution(Scanner sc) throws Exception {
         int a,b;
+        Object c,d;
         int cond=0;
+        Stack<String> tempStack;
         String functionName = "";
         while(!sc.nextLine().equals("Function Name: main"));
         while(sc.hasNext()) {
@@ -75,12 +78,20 @@ public class RunTime {
                     System.out.println(varStack.pop());
                     break;
                 case "EQ":
-                    a = Integer.parseInt(varStack.pop());
-                    b = Integer.parseInt(varStack.pop());
-                    if (a == b)
+                    if(varStack.peek().getClass() == "".getClass()){
+                        c = Integer.parseInt(varStack.pop());
+                        d = Integer.parseInt(varStack.pop());
+                    }
+//                    else, assume boolean
+                    else{
+                        c = Boolean.parseBoolean(varStack.pop());
+                        d = Boolean.parseBoolean(varStack.pop());
+                    }
+                    if (c == d)
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "GT":
                     a = Integer.parseInt(varStack.pop());
@@ -89,6 +100,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "LT":
                     a = Integer.parseInt(varStack.pop());
@@ -97,6 +109,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "LTE":
                     a = Integer.parseInt(varStack.pop());
@@ -105,6 +118,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "GTE":
                     a = Integer.parseInt(varStack.pop());
@@ -113,16 +127,25 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "NOTEQUALS":
-                    a = Integer.parseInt(varStack.pop());
-                    b = Integer.parseInt(varStack.pop());
-                    if (a != b)
+                    if(varStack.peek().getClass() == "".getClass()){
+                        c = Integer.parseInt(varStack.pop());
+                        d = Integer.parseInt(varStack.pop());
+                    }
+//                    else, assume boolean
+                    else{
+                        c = Boolean.parseBoolean(varStack.pop());
+                        d = Boolean.parseBoolean(varStack.pop());
+                    }
+                    if (c != d)
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
-                case "if" : varStack.push(String.valueOf(cond));
+                case "if" :
                     if(!varStack.peek().equals("1")){
                         while(!(sc.nextLine()).equals("GO TO EndIF"+opCode[2]));
                     }
@@ -189,15 +212,34 @@ public class RunTime {
                     //symbolTable.clear();
                     break;
                 case "Stack":
-
+                    stackTable.put(opCode[1], new Stack<String>());
                     break;
                 case "STACKPUSH":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        tempStack.push(opCode[1]);
+                        stackTable.put(opCode[1], tempStack);
+                    }
                     break;
                 case "STACKPOP":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.pop());
+                        stackTable.put(opCode[1], tempStack);
+                    }
                     break;
                 case "STACKTOP":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.peek());
+                    }
+
                     break;
                 case "STACKEMPTY":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.isEmpty()? "true" : "false");
+                    }
                     break;
                 case "ENDS":
                     System.exit(0);
