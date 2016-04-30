@@ -12,7 +12,7 @@ public class RunTime {
     public static Stack<HashMap<String,String>> activationStack = new Stack<>();
     public static Stack<String> varStack = new Stack<>();
     public static Stack<Scanner> scannerStack = new Stack<>();
-    public static String fileName = "ArithmeticOperations.djpclass";
+    public static String fileName = "Factorial.djpclass";
 
 
     public static void main(String args[]) throws Exception{
@@ -144,7 +144,7 @@ public class RunTime {
                         cond = 0;
                     varStack.push(String.valueOf(cond));
                     break;
-                case "if" : varStack.push(String.valueOf(cond));
+                case "if" :
                     if(!varStack.peek().equals("1")){
                         while(!(sc.nextLine()).equals("GO TO EndIF"+opCode[2]));
                     }
