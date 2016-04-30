@@ -82,6 +82,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "GT":
                     a = Integer.parseInt(varStack.pop());
@@ -90,6 +91,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "LT":
                     a = Integer.parseInt(varStack.pop());
@@ -98,6 +100,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "LTE":
                     a = Integer.parseInt(varStack.pop());
@@ -106,6 +109,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "GTE":
                     a = Integer.parseInt(varStack.pop());
@@ -114,6 +118,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "NOTEQUALS":
                     a = Integer.parseInt(varStack.pop());
@@ -122,6 +127,7 @@ public class RunTime {
                         cond = 1;
                     else
                         cond = 0;
+                    varStack.push(String.valueOf(cond));
                     break;
                 case "if" : varStack.push(String.valueOf(cond));
                     if(!varStack.peek().equals("1")){
