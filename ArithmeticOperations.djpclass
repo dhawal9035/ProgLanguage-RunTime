@@ -1,0 +1,32 @@
+Program Body begins
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+PUSH 8
+STORE a Data Type Num
+PUSH 6
+STORE b Data Type Num
+PUSH 4
+STORE c Data Type Num
+PUSH 2
+STORE d Data Type Num
+LOAD a
+LOAD b
+ADD
+LOAD c
+LOAD d
+DIV
+SUB
+PrintLN -> New Line
+LOAD a
+LOAD b
+LOAD c
+DIV
+MUL
+LOAD d
+ADD
+PrintLN -> New Line
+FunctionBodyEnds:main
+ENDS

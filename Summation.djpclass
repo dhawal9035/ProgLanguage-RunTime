@@ -1,0 +1,35 @@
+Program Body begins
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+PUSH 10
+STORE n Data Type Num
+PUSH 1
+STORE i Data Type Num
+PUSH 0
+STORE sum Data Type Num
+WhileStart 1
+LOAD i
+LOAD n
+PUSH 1
+ADD
+LT
+While 1
+LOAD sum
+LOAD i
+ADD
+STORE sum
+LOAD i
+PUSH 1
+ADD
+STORE i
+LOAD i
+PrintLN -> New Line
+GOTOWhileStart 1
+WhileEnd 1
+LOAD sum
+PrintLN -> New Line
+FunctionBodyEnds:main
+ENDS

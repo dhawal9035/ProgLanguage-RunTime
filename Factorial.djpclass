@@ -1,0 +1,48 @@
+Program Body begins
+Function Name: fact
+Parameters Start
+No of parameters:1
+Data type:Num
+STORE n
+Parameters End
+Function Body Starts
+PUSH 1
+STORE factVal Data Type Num
+LOAD n
+PUSH 1
+EQ
+if true 1
+PUSH 1
+STORE factVal
+GO TO EndIF1
+else 1
+LOAD n
+PUSH 1
+SUB
+STORE res Data Type Num
+LOAD res
+Call fact 1
+STORE tVal Data Type Num
+LOAD n
+LOAD tVal
+MUL
+STORE factVal
+Else Ends1
+EndIF1
+LOAD factVal
+RETURN
+FunctionBodyEnds
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+PUSH 6
+STORE n Data Type Num
+LOAD n
+Call fact 0
+STORE result Data Type Num
+LOAD result
+PrintLN -> New Line
+FunctionBodyEnds:main
+ENDS

@@ -1,0 +1,24 @@
+Program Body begins
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+PUSH 4
+STORE i Data Type Num
+PUSH 5
+STORE j Data Type Num
+LOAD i
+LOAD j
+LT
+if true 1
+LOAD j
+PrintLN -> New Line
+GO TO EndIF1
+else 1
+LOAD i
+PrintLN -> New Line
+Else Ends1
+EndIF1
+FunctionBodyEnds:main
+ENDS

@@ -1,0 +1,28 @@
+Program Body begins
+Function Name: show
+Parameters Start
+No of parameters:1
+Data type:Num
+STORE i
+Parameters End
+Function Body Starts
+PUSH 40
+STORE i
+LOAD i
+PrintLN -> New Line
+FunctionBodyEnds
+Function Name: main
+Parameters Start
+No of parameters:0
+Parameters End
+Function Body Starts
+PUSH 10
+STORE i Data Type Num
+LOAD i
+PrintLN -> New Line
+LOAD i
+Call show 0
+LOAD i
+PrintLN -> New Line
+FunctionBodyEnds:main
+ENDS
