@@ -8,6 +8,7 @@ import java.util.Stack;
  */
 public class RunTime {
     public static HashMap<String,String> symbolTable = new HashMap<>();
+    public static HashMap<String,Stack<String>> stackTable = new HashMap<>();
     public static Stack<HashMap<String,String>> activationStack = new Stack<>();
     public static Stack<String> varStack = new Stack<>();
     public static Stack<Scanner> scannerStack = new Stack<>();
@@ -24,6 +25,7 @@ public class RunTime {
     public static void startExecution(Scanner sc) throws Exception {
         int a,b;
         int cond=0;
+        Stack<String> tempStack;
         String functionName = "";
         while(!sc.nextLine().equals("Function Name: main"));
         while(sc.hasNext()) {
@@ -188,15 +190,34 @@ public class RunTime {
                     //symbolTable.clear();
                     break;
                 case "Stack":
-
+                    stackTable.put(opCode[1], new Stack<String>());
                     break;
                 case "STACKPUSH":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        tempStack.push(opCode[1]);
+                        stackTable.put(opCode[1], tempStack);
+                    }
                     break;
                 case "STACKPOP":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.pop());
+                        stackTable.put(opCode[1], tempStack);
+                    }
                     break;
                 case "STACKTOP":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.peek());
+                    }
+
                     break;
                 case "STACKEMPTY":
+                    if(stackTable.containsKey(opCode[1])){
+                        tempStack = stackTable.get(opCode[1]);
+                        varStack.push(tempStack.isEmpty()? "true" : "false");
+                    }
                     break;
                 case "ENDS":
                     System.exit(0);
