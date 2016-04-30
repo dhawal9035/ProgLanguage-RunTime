@@ -24,6 +24,7 @@ public class RunTime {
     }
     public static void startExecution(Scanner sc) throws Exception {
         int a,b;
+        Object c,d;
         int cond=0;
         Stack<String> tempStack;
         String functionName = "";
@@ -76,9 +77,16 @@ public class RunTime {
                     System.out.println(varStack.pop());
                     break;
                 case "EQ":
-                    a = Integer.parseInt(varStack.pop());
-                    b = Integer.parseInt(varStack.pop());
-                    if (a == b)
+                    if(varStack.peek().getClass() == "".getClass()){
+                        c = Integer.parseInt(varStack.pop());
+                        d = Integer.parseInt(varStack.pop());
+                    }
+//                    else, assume boolean
+                    else{
+                        c = Boolean.parseBoolean(varStack.pop());
+                        d = Boolean.parseBoolean(varStack.pop());
+                    }
+                    if (c == d)
                         cond = 1;
                     else
                         cond = 0;
@@ -121,9 +129,16 @@ public class RunTime {
                     varStack.push(String.valueOf(cond));
                     break;
                 case "NOTEQUALS":
-                    a = Integer.parseInt(varStack.pop());
-                    b = Integer.parseInt(varStack.pop());
-                    if (a != b)
+                    if(varStack.peek().getClass() == "".getClass()){
+                        c = Integer.parseInt(varStack.pop());
+                        d = Integer.parseInt(varStack.pop());
+                    }
+//                    else, assume boolean
+                    else{
+                        c = Boolean.parseBoolean(varStack.pop());
+                        d = Boolean.parseBoolean(varStack.pop());
+                    }
+                    if (c != d)
                         cond = 1;
                     else
                         cond = 0;
